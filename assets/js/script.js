@@ -1,6 +1,20 @@
 var main = document.querySelector("#main");
 var timer = document.querySelector("#timer");//targets the timer id in html with dom manupulation
-
+var time = 70;
+//timer with 70 seconds
+var timer = function() {
+    var timeInterval = setInterval(() => {
+        if (time > 1) {
+            timer.textContent = time;
+            time --;
+            console.log(time);
+        }else {
+            timer.textContent = "You're done son!";
+            clearInterval(timeInterval);
+        }
+    },1000);
+    console.log("TIME STARTS NOW!")
+}
 
 //created function with variable name question 1
 var question1 = function() {
@@ -14,20 +28,50 @@ var question1 = function() {
 
     //answers
     var answer1 = document.createElement("button");
+    answer1.setAttribute("id", "wrong");
+    answer1.className = "answer-1";
     answer1.textContent = "strings";
     question1Div.appendChild(answer1);
+    answer1.addEventListener("click", event => {
+        wrongAns();
+    })
 
     var answer2 = document.createElement("button");
+    answer2.setAttribute("id", "wrong");
+    answer2.className = "answer-2";
     answer2.textContent = "booleans";
     question1Div.appendChild(answer2);
+    answer2.addEventListener("click", event => {
+        wrongAns();
+    })
 
     var answer3 = document.createElement("button");
+    answer3.setAttribute("id", "correct");
+    answer3.className = "answer-3";
     answer3.textContent = "alerts";
     question1Div.appendChild(answer3);
+    answer3.addEventListener("click", event => {
+        question1Div.remove();
+        question2();
+        console.log("Correct!");
+    })
 
     var answer4 = document.createElement("button");
+    answer4.setAttribute("id", "wrong");
+    answer4.className = "answer-4";
     answer4.textContent = "numbers";
     question1Div.appendChild(answer4);
+    answer4.addEventListener("click", event => {
+        wrongAns();
+    })
+
+
+    var wrongAns = function() {
+        time = time - 10;
+        question1Div.remove();
+        question2();
+        console.log("Wrong answer!");
+    }
 }
 
 //question 2
@@ -146,7 +190,7 @@ var question5 = function () {
 var start = function() { 
     var container = document.createElement("div");//making a div element
     container.className= "first-container"//naming the div first-container
-    main.appendChild(container);//appending in the main section
+    main.appendChild(container);//appending in div container
 
 //created h1 element 
     var firstHeader = document.createElement("h1");
@@ -165,6 +209,7 @@ var start = function() {
     container.appendChild(startBtn);
 //created event lister for start quiz button and removes the previos manipulations from page
     startBtn.addEventListener("click", event => {
+        timer();//calls timer function and starts it
         startBtn.remove();//removes from home page on click
         firstHeader.remove();//removes from home page on click
         firstParagraph.remove();//removes from home page on click
