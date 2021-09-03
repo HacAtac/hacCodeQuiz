@@ -49,6 +49,7 @@ header {
     background-color: black;
     color: var(--secondary);
     font-weight: 900;
+    border-radius: 10px;
 }
 /*main page content end */
 
@@ -70,6 +71,11 @@ header {
     background-color: black;
     color: var(--secondary);
     font-weight: 900;
+    border-radius: 10px;
+}
+
+.answer-1:hover,.answer-2:hover,.answer-3:hover,.answer-4:hover,.home-btn:hover {
+    background-color:aquamarine;
 }
 
 

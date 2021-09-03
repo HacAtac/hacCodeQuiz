@@ -1,40 +1,37 @@
 var main = document.querySelector("#main");
-var timer = document.querySelector("#timer");//targets the timer id in html with dom manupulation
+var timerEl = document.querySelector("#timer");//targets the timer id in html with dom manupulation
 var time = 30;
 var totalScore = 0;
+// an array of objects each object will contain intials and score
+var allScores;
+if (JSON.parse(localStorage.getItem("highscore_intials"))) {
+    allScores = JSON.parse(localStorage.getItem("highscore_intials"))
+}else {
+    allScores = []
+}
 
 //timer with 30 seconds
 var timer = function() {
     
     var timeInterval = setInterval(() => {
         if (time > 1) {
-            timer.textContent = time;
+            timerEl.textContent = time;
             time --;
             console.log(time);
         }else {
-            timer.textContent = "";
+            timerEl.textContent = "";
             clearInterval(timeInterval);
             console.log("TIME IS UP!");
         }
     },1000);
     console.log("TIME STARTS NOW!")
 }
-// NOT DONE YET!!!!! NOT DONE YET!!!!!! WILL BE FOR END QUIZ SCORE/INPUT USER NAME ETC.
-var highScore = function() {
-    //container for highScore page after questions are answered
-    var finalPageDiv = document.createElement("div");
-    finalPageDiv.className = "final-page-div";
-    main.appendChild(finalPageDiv);
-    //
-    var finalPageH1 = document.createElement("h1");
-    finalPageH1.className = "all-done";
-    finalPageDiv.appendChild(finalPageH1);
 
-    var finalPageScore = document.createElement("p");
-    finalPageScore.className = "final-score";
-    finalPageScore.textContent =  "Your final score is", + score , 
-    finalPageDiv.appendChild(finalPageScore);
 
+//creating function to add score for correct answers
+var score = function() {
+    totalScore = totalScore + 10;
+    console.log("You have " + totalScore + " score!");
 }
 
 //created function with variable name question 1
@@ -311,6 +308,7 @@ var question5 = function () {
         console.log("Correct!");
         score();
         console.log(totalScore);
+        afterQuestions();
     })
 
     var answer2 = document.createElement("button");
@@ -320,6 +318,7 @@ var question5 = function () {
     question5Div.appendChild(answer2);
     answer2.addEventListener("click", event => {
         wrongAns();
+        afterQuestions();
     })
 
     var answer3 = document.createElement("button");
@@ -329,6 +328,7 @@ var question5 = function () {
     question5Div.appendChild(answer3);
     answer3.addEventListener("click", event => {
         wrongAns();
+        afterQuestions();
     })
 
     var answer4 = document.createElement("button");
@@ -338,26 +338,77 @@ var question5 = function () {
     question5Div.appendChild(answer4);
     answer4.addEventListener("click", event => {
         wrongAns();
+        afterQuestions();
     })
 
     var wrongAns = function() {
         time = time - 10;
         question5Div.remove();
         console.log("Wrong answer!");
+        
     }
-
+    
 }
 
-//creating function to add score for correct answers
-var score = function() {
-    totalScore = totalScore + 10;
-    console.log("You have " + totalScore + " score!");
+// NOT DONE YET!!!!! NOT DONE YET!!!!!! WILL BE FOR END QUIZ SCORE/INPUT USER NAME ETC.
+var afterQuestions = function() {
+    //container for highScore page after questions are answered
+    var container = document.createElement("div");
+    container.className= "after-questions";
+    main.appendChild(container);
+    //just making a header title here
+    var afterH1 = document.createElement("h1");
+    afterH1.className = "after-h1";
+    afterH1.textContent = "All Done!";
+    container.appendChild(afterH1);
+    // will show the high scores after all question are answered
+    var afterP = document.createElement("p");
+    afterP.className = "after-p";
+    afterP.textContent = " Your final score is " + totalScore + " good job!";
+    container.appendChild(afterP);
+    
+    var inputText = document.createElement("p");
+    inputText.className = "input-text";
+    inputText.textContent = "Enter your initials here.";
+    container.appendChild(inputText);
+    
+    var afterInitials = document.createElement("input");
+    afterInitials.className = "after-initials";
+    afterInitials.textContent = "Enter initials here.";
+    container.appendChild(afterInitials);
+    
+
+    var afterBtn = document.createElement("button");
+    afterBtn.className = "after-btn";
+    afterBtn.textContent = "submit";
+    container.appendChild(afterBtn);
+    afterBtn.addEventListener("click", function() {
+    
+    var newInitalSet = {
+        intials: afterInitials.value,
+        score: totalScore,
+    }
+    console.log(newInitalSet);
+    // 
+    allScores.push(newInitalSet)
+    // makes this array into a string so that it can be stored into local storage.
+    localStorage.setItem("highscore_intials",JSON.stringify(allScores))
+
+    });
+    // need to make it so that you can input initials and save it to localStorage with submit button
+    //var initialsSub = document.createElement("div");
+    //initialsSub.className= "initials-div";
+    //main.appendChild(initialsSub);
+
+    
+
+    
 }
 
 //created function to contain main mage content
 var start = function() { 
     var container = document.createElement("div");//making a div element
-    container.className= "first-container"//naming the div first-container
+    container.className= "first-container";//naming the div first-container
     main.appendChild(container);//appending in div container
 
 
