@@ -1,6 +1,8 @@
 var main = document.querySelector("#main");
 var timer = document.querySelector("#timer");//targets the timer id in html with dom manupulation
 var time = 30;
+var totalScore = 0;
+
 //timer with 30 seconds
 var timer = function() {
     
@@ -12,9 +14,27 @@ var timer = function() {
         }else {
             timer.textContent = "";
             clearInterval(timeInterval);
+            console.log("TIME IS UP!");
         }
     },1000);
     console.log("TIME STARTS NOW!")
+}
+// NOT DONE YET!!!!! NOT DONE YET!!!!!! WILL BE FOR END QUIZ SCORE/INPUT USER NAME ETC.
+var highScore = function() {
+    //container for highScore page after questions are answered
+    var finalPageDiv = document.createElement("div");
+    finalPageDiv.className = "final-page-div";
+    main.appendChild(finalPageDiv);
+    //
+    var finalPageH1 = document.createElement("h1");
+    finalPageH1.className = "all-done";
+    finalPageDiv.appendChild(finalPageH1);
+
+    var finalPageScore = document.createElement("p");
+    finalPageScore.className = "final-score";
+    finalPageScore.textContent =  "Your final score is", + score , 
+    finalPageDiv.appendChild(finalPageScore);
+
 }
 
 //created function with variable name question 1
@@ -56,6 +76,9 @@ var question1 = function() {
         question1Div.remove();
         question2();
         console.log("Correct!");
+        score();
+        console.log(totalScore);
+        
     })
 
     var answer4 = document.createElement("button");
@@ -115,6 +138,8 @@ var question2 = function () {
         question2Div.remove();
         question3();
         console.log("Correct!");
+        score();
+        console.log(totalScore);
     })
 
 
@@ -129,10 +154,12 @@ var question2 = function () {
 
     var wrongAns = function() {
         time = time - 10;
-        question1Div.remove();
+        question2Div.remove();
         question3();
         console.log("Wrong answer!");
     }
+
+    
 }
 
 
@@ -157,6 +184,8 @@ var question3 = function () {
         question3Div.remove();
         question4();
         console.log("Correct!");
+        score();
+        console.log(totalScore);
     })
 
     var answer2 = document.createElement("button");
@@ -189,7 +218,7 @@ var question3 = function () {
 
     var wrongAns = function() {
         time = time - 10;
-        question1Div.remove();
+        question3Div.remove();
         question4();
         console.log("Wrong answer!");
     }
@@ -243,7 +272,16 @@ var question4 = function () {
         question4Div.remove();
         question5();
         console.log("Correct!");
+        score();
+        console.log(totalScore);
     })
+
+    var wrongAns = function() {
+        time = time - 10;
+        question4Div.remove();
+        question5();
+        console.log("Wrong answer!");
+    }
 }
 
 
@@ -267,6 +305,8 @@ var question5 = function () {
     answer1.addEventListener("click", event => {
         question5Div.remove();
         console.log("Correct!");
+        score();
+        console.log(totalScore);
     })
 
     var answer2 = document.createElement("button");
@@ -296,6 +336,18 @@ var question5 = function () {
         wrongAns();
     })
 
+    var wrongAns = function() {
+        time = time - 10;
+        question5Div.remove();
+        console.log("Wrong answer!");
+    }
+
+}
+
+//creating function to add score for correct answers
+var score = function() {
+    totalScore = totalScore + 10;
+    console.log("You have " + totalScore + " score!");
 }
 
 //created function to contain main mage content
