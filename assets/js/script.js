@@ -133,6 +133,7 @@ var question2 = function () {
     var answer3 = document.createElement("button");
     answer3.setAttribute("id", "correct");
     answer3.textContent = "<script>";
+    answer3.className = "answer-3";
     question2Div.appendChild(answer3);
     answer3.addEventListener("click", event => {
         question2Div.remove();
@@ -171,6 +172,7 @@ var question3 = function () {
     main.appendChild(question3Div);
     //question
     var question3 = document.createElement("h1");
+    question3.className="question";
     question3.textContent = "How do you call a function named 'myFunction' ";
     question3Div.appendChild(question3);
 
@@ -232,6 +234,7 @@ var question4 = function () {
     main.appendChild(question4Div);
     //questions
     var question4 = document.createElement("h1");
+    question4.className="question";
     question4.textContent = "How do you round the number 7.25, to the nearest integer?";
     question4Div.appendChild(question4);
 
@@ -293,6 +296,7 @@ var question5 = function () {
     
     //questions
     var question5 = document.createElement("h1");
+    question5.className= "question";
     question5.textContent = "How do you find the number with the highest value of x and y?";
     question5Div.appendChild(question5);
 
@@ -366,7 +370,7 @@ var start = function() {
     //created p ele
     var firstParagraph = document.createElement("p");
     firstParagraph.className = "first-p";
-    firstParagraph.textContent = "Try to answer the following questions within the time limit" + "Keep in mind that answering wrong will take 10 seconds away from timer!"
+    firstParagraph.textContent = "Try to answer the following questions within the time limit." + " Keep in mind that answering wrong will take 10 seconds away from timer!"
     container.appendChild(firstParagraph);
 
     //created a button
