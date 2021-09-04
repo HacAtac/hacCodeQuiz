@@ -42,7 +42,7 @@ var question1 = function() {
     //question
     var question1 = document.createElement("h1");
     question1.className = "question";
-    question1.textContent = "Commonly Used data types DO NOT include:";
+    question1.textContent = "Commonly used data types do not include:";
     question1Div.appendChild(question1);
 
     //answers
@@ -396,16 +396,9 @@ var afterQuestions = function() {
 
     });
     // need to make it so that you can input initials and save it to localStorage with submit button
-    //var initialsSub = document.createElement("div");
-    //initialsSub.className= "initials-div";
-    //main.appendChild(initialsSub);
-
-    
-
-    
 }
 
-//created function to contain main mage content
+//created function to contain main page content
 var start = function() { 
     var container = document.createElement("div");//making a div element
     container.className= "first-container";//naming the div first-container

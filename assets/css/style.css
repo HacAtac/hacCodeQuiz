@@ -23,29 +23,30 @@ header {
     padding: 15px 30px 15px 30px;
 }
 /* this is main page content */
+.first-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
 .first-title {
     color: var(--secondary);
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    padding-top: 100px;
-    font-weight:900;
+    font-weight: 900;
 }
 
 .first-p {
     color: var(--secondary);
-    display: flex;
+    display:flex;
+    flex-wrap: wrap;
     justify-content: center;
-    padding-top: 15px;
-    font-size: 16px;
-    font-weight: bold;
+    margin-top: 15px;
 }
 
 .home-btn {
-    display: flex;
-    justify-content: center;
-    width: 40%;
-    margin-top: 15px;
-    margin-left: 315px;
+    margin: 20px 500px 0 500px;
     background-color: black;
     color: var(--secondary);
     font-weight: 900;
@@ -53,21 +54,23 @@ header {
 }
 /*main page content end */
 
+/*question page */
+.question-1-div {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
 
 .question {
     color: var(--secondary);
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    padding-top: 100px;
-    font-weight:900;
+    font-weight: 900;
 }
 
 .answer-1, .answer-2, .answer-3, .answer-4 {
-    display: flex;
-    justify-content: space-around;
-    width: 40%;
-    margin-top: 5px;
-    margin-left: 315px;
+    margin: 20px 500px 0 500px;
     background-color: black;
     color: var(--secondary);
     font-weight: 900;
@@ -77,8 +80,33 @@ header {
 .answer-1:hover,.answer-2:hover,.answer-3:hover,.answer-4:hover,.home-btn:hover {
     background-color:aquamarine;
 }
+/* end question page */
 
+/*after question page */
+.after-questions {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 
+.after-h1, .after-p, .input-text {
+    color: var(--secondary);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-weight: 900;
+}
 
+.after-initials, .after-btn {
+    margin: 20px 500px 0 500px;
+    background-color: black;
+    color: var(--secondary);
+    font-weight: 900;
+    border-radius: 10px;
+}
+
+.after-initials:hover, .after-btn:hover {
+    background-color: brown;
+}
 
 
