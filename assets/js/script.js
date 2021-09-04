@@ -11,9 +11,10 @@ if (JSON.parse(localStorage.getItem("highscore_intials"))) {
 }
 
 //timer with 30 seconds
+var timeInterval;
 var timer = function() {
     
-    var timeInterval = setInterval(() => {
+        timeInterval = setInterval(() => {
         if (time > 1) {
             timerEl.textContent = time;
             time --;
@@ -25,11 +26,11 @@ var timer = function() {
         }
     },1000);
     console.log("TIME STARTS NOW!")
+
 }
-// highscorepage need to localStorage.getItem here to display on page.
-// also need to make a clear storage button
+
 // if i have time need to make a wrong and correct appear when clicking answers. doesnt go here.
-// need to update my read.me to meet acceptance criteria
+
 // need to deploy on github pages
 var highScorePage = function() {
     var highScoreDiv = document.createElement("div");
@@ -41,12 +42,6 @@ var highScorePage = function() {
     highScoreH1.textContent = "High Scores";
     highScoreDiv.appendChild(highScoreH1);
 
-    //highScoreH1.innerHTML = localStorage.getItem("highScore_intials")[0].intials
-    //var highScoreP = document.createElement("p");
-    //highScoreP.className ="high-score-p";
-    //highScoreP.textContent = "1." + highscore_intials;
-    //highScoreDiv.appendChild(highScoreP);
-
     var clearStorageBtn = document.createElement("button");
     clearStorageBtn.classname = "clear-storage";
     clearStorageBtn.textContent = "Clear High Scores";
@@ -54,7 +49,17 @@ var highScorePage = function() {
     clearStorageBtn.addEventListener("click", event => {
         localStorage.clear();
     })
-
+    
+    
+    var highScoreInitials = JSON.parse(localStorage.getItem("highscore_intials"));
+        console.log("highscore_intials", highScoreInitials);
+        highScoreInitials.forEach((element, i) => {
+            var localGet = document.createElement("div");
+            localGet.classname = "local-get";
+            localGet.textContent = i+1 +". " + element.intials + element.score;
+            highScoreDiv.appendChild(localGet);
+        });
+        //for (i=0; i<highScoreInitials.length; i+=1);
     var backBtn = document.createElement("button");
     backBtn.classname = "back-btn";
     backBtn.textContent = "Go Back";
@@ -62,11 +67,16 @@ var highScorePage = function() {
     backBtn.addEventListener("click", event => {
         start();
         highScoreDiv.remove();
+
+    
+        
     })
     
     
-    
+    clearInterval(timeInterval);
+    time = 30;
 }
+
 
 //creating function to add score for correct answers
 var score = function() {

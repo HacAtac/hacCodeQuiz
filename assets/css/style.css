@@ -51,6 +51,7 @@ header {
     color: var(--secondary);
     font-weight: 900;
     border-radius: 10px;
+    height:30px;
 }
 /*main page content end */
 
@@ -75,6 +76,8 @@ header {
     color: var(--secondary);
     font-weight: 900;
     border-radius: 10px;
+    height: 50px;
+    width: 200px;
 }
 
 .answer-1:hover,.answer-2:hover,.answer-3:hover,.answer-4:hover,.home-btn:hover {
@@ -103,10 +106,39 @@ header {
     color: var(--secondary);
     font-weight: 900;
     border-radius: 10px;
+    height: 40px;
+
 }
 
 .after-initials:hover, .after-btn:hover {
     background-color: brown;
 }
+/*After question page end */
+/*high score page start */
 
+.high-score-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 
+.high-score-h1 {
+    color: var(--secondary);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-weight: 900;
+}
+
+.high-score-div button {
+    margin: 20px 500px 0 500px;
+    background-color: black;
+    color: var(--secondary);
+    font-weight: 900;
+    border-radius: 10px;
+    height: 40px;
+}
+
+.high-score-div button:hover {
+    background-color:brown;
+}
