@@ -17,6 +17,6 @@
 <a href = "https://github.com/HacAtac/hacCodeQuiz" target="_blank">Link to my git hub application.</a></br>
 
 <a href = "" target="_blank"> Link to my deployed application!</a>
+<h3>Screenshot of deployed app!</h3>
 
-<h3>Screenshot of deployed application!</h3>
-<img src="![image](https://user-images.githubusercontent.com/87215152/132079957-3a402664-f40a-42de-a093-06defbba1b0a.png)" alt="Picture of deployed app!">
+![image](https://user-images.githubusercontent.com/87215152/132079957-3a402664-f40a-42de-a093-06defbba1b0a.png)
