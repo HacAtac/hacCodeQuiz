@@ -7,7 +7,7 @@ var allScores;
 if (JSON.parse(localStorage.getItem("highscore_intials"))) {
     allScores = JSON.parse(localStorage.getItem("highscore_intials"))
 }else {
-    allScores = []
+    allScores = []  
 }
 
 //timer with 30 seconds
@@ -26,7 +26,47 @@ var timer = function() {
     },1000);
     console.log("TIME STARTS NOW!")
 }
+// highscorepage need to localStorage.getItem here to display on page.
+// also need to make a clear storage button
+// if i have time need to make a wrong and correct appear when clicking answers. doesnt go here.
+// need to update my read.me to meet acceptance criteria
+// need to deploy on github pages
+var highScorePage = function() {
+    var highScoreDiv = document.createElement("div");
+    highScoreDiv.className = "high-score-div";
+    main.appendChild(highScoreDiv);
 
+    var highScoreH1 = document.createElement("h1");
+    highScoreH1.className = "high-score-h1";
+    highScoreH1.textContent = "High Scores";
+    highScoreDiv.appendChild(highScoreH1);
+
+    //highScoreH1.innerHTML = localStorage.getItem("highScore_intials")[0].intials
+    //var highScoreP = document.createElement("p");
+    //highScoreP.className ="high-score-p";
+    //highScoreP.textContent = "1." + highscore_intials;
+    //highScoreDiv.appendChild(highScoreP);
+
+    var clearStorageBtn = document.createElement("button");
+    clearStorageBtn.classname = "clear-storage";
+    clearStorageBtn.textContent = "Clear High Scores";
+    highScoreDiv.appendChild(clearStorageBtn);
+    clearStorageBtn.addEventListener("click", event => {
+        localStorage.clear();
+    })
+
+    var backBtn = document.createElement("button");
+    backBtn.classname = "back-btn";
+    backBtn.textContent = "Go Back";
+    highScoreDiv.appendChild(backBtn);
+    backBtn.addEventListener("click", event => {
+        start();
+        highScoreDiv.remove();
+    })
+    
+    
+    
+}
 
 //creating function to add score for correct answers
 var score = function() {
@@ -93,6 +133,7 @@ var question1 = function() {
         question1Div.remove();
         question2();
         console.log("Wrong answer!");
+        
     }
 }
 
@@ -345,6 +386,7 @@ var question5 = function () {
         time = time - 10;
         question5Div.remove();
         console.log("Wrong answer!");
+        end = true;
         
     }
     
@@ -393,8 +435,9 @@ var afterQuestions = function() {
     allScores.push(newInitalSet)
     // makes this array into a string so that it can be stored into local storage.
     localStorage.setItem("highscore_intials",JSON.stringify(allScores))
-
-    });
+    container.remove();
+    highScorePage();
+});
     // need to make it so that you can input initials and save it to localStorage with submit button
 }
 
