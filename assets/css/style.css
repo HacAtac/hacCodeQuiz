@@ -142,3 +142,12 @@ header {
 .high-score-div button:hover {
     background-color:brown;
 }
+
+.local-get {
+    padding-top: 10px;
+    background-color: grey;
+    color: var(--secondary);
+    font-weight: 900;
+    border-radius: 10px;
+    margin: 20px 500px 0 500px;
+}

@@ -50,14 +50,15 @@ var highScorePage = function() {
         localStorage.clear();
     })
     
-    
+    // getting local storage to be on highscore page.
     var highScoreInitials = JSON.parse(localStorage.getItem("highscore_intials"));
         console.log("highscore_intials", highScoreInitials);
         highScoreInitials.forEach((element, i) => {
             var localGet = document.createElement("div");
-            localGet.classname = "local-get";
+            localGet.className = "local-get";
             localGet.textContent = i+1 +". " + element.intials + element.score;
             highScoreDiv.appendChild(localGet);
+
         });
         //for (i=0; i<highScoreInitials.length; i+=1);
     var backBtn = document.createElement("button");
@@ -74,6 +75,7 @@ var highScorePage = function() {
     
     
     clearInterval(timeInterval);
+    // resets timer on reset button
     time = 30;
 }
 
@@ -399,7 +401,8 @@ var question5 = function () {
         end = true;
         
     }
-    
+    // stop timer after question 5 is answered.
+    clearInterval(timeInterval);
 }
 
 // NOT DONE YET!!!!! NOT DONE YET!!!!!! WILL BE FOR END QUIZ SCORE/INPUT USER NAME ETC.
